@@ -5,7 +5,7 @@ zip archive. Additionally, it is really helpful when 'torch.load()' is utilized 
 True to prevent injecting malicious, unwanted data (e.g., classes, functions, modules, or etc) into the program. This only inserts the raw tensors into the model
 without executing arbitrary code.**
 
-## 1. 'model_saved_parameters' contains momentum and variance buffers from Adaptive Optimizer (Adaptive Moment Estimation/Adam method), each neural layer's Query,
+**1.** 'model_saved_parameters' contains momentum and variance buffers from Adaptive Optimizer (Adaptive Moment Estimation/Adam method), each neural layer's Query,
 Key, Value, feature compression, feature decompression, attention gamma & beta, feed-forward network gamma & beta, current step in training, and raw output weight 
 (for consolidating the calculated meanings between each multi-head attention after they have successfully reconnected using reshaping method). This is ready to save.
 ```python
@@ -17,14 +17,14 @@ model_saved_parameters = {
 }
 ```
 
-## 2. As mentioned above, PyTorch's save function stores a given argument with the file location - 'torch.save(model_content, file_location_name)'. Lastly, using a
+**2.** As mentioned above, PyTorch's save function stores a given argument with the file location - 'torch.save(model_content, file_location_name)'. Lastly, using a
 print statement to check if it has finished the saving operation. 
 ```python
 t.save(model_saved_parameters, current_saved_model_file)
 print(f"\n[Saved DeepGradient's Internal Weights to '{current_saved_model_file}']\n")
 ```
 
-## (FULL-SECTION CODE BELOW)
+**(FULL-SECTION CODE BELOW)**
 ```python
 def SaveModelWeights(self, current_saved_model_file = 'anygradient_mini_model_0.5.pt'):
   model_saved_parameters = {
